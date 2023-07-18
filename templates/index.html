@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+        <title>Inventory management/Register</title>
+        <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/OIP.1gJZRRUx9LzXZHM-uOdg7wAAAA?pid=ImgDet&w=297&h=297&rs=1">
+</head>
+<style>
+    header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+body {
+    background-image: url(https://w0.peakpx.com/wallpaper/288/214/HD-wallpaper-pattern-texture-digital-art-brown-brown-aesthetic.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li a {
+            display: block;
+            padding: 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        li a:hover {
+            background-color: #ddd;
+        }
+    .Index-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+</style>
+<body>
+    <header>
+        <h1 style="color: rgb(0, 195, 255);">Inventory Management</h1>
+        {% if username %}
+            <p>Welcome, {{ username }}</p>
+            <a href="/logout" style="color:red;">Logout</a>
+        {% endif %}
+    </header>
+    <div class="Index-container">
+        <h3>Managements</h3>
+    <ul>
+        <li><a href="/products">Add products</a></li>
+        <li><a href="/locations">Add Location</a></li>
+        <li><a href="/movements">Manage Movements</a></li>
+        <li><a href="/balance">View Balance</a></li>
+    </ul>
+</div>
+<div class="footerat" style="background-color: black;color: #ddd;align-items: center;justify-content: center;">
+        <footer>
+            &copy; 2023 Inventory Management. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

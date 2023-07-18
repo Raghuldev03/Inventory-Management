@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory management/Movement</title>
+    <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/OIP.1gJZRRUx9LzXZHM-uOdg7wAAAA?pid=ImgDet&w=297&h=297&rs=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiLprGpz0jxX-Aw2ZY30DU9sn2yHo0TcR3kA&usqp=CAU);
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .container{
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+        h1 {
+            margin-top: 40px;
+        }
+
+        
+        .container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+         input[type="submit"], button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form input[type="text"],
+         form input[type="password"],
+        form input[type="submit"] {
+        width: 70%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+}
+
+        input[type="text"] {
+            width: 200px;
+        }
+
+        input[type="submit"], button {
+            background-color: #070707;
+            color: #ffffff;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button{
+            text-decoration: none;
+            color: #f5f3f3;
+        }
+
+        button[type="submit"] {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            color: #aef40b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Movements</h3>
+        <form action="/movements" method="POST">
+            <input type="text" name="product_id" placeholder="Product ID" required>
+            <input type="text" name="from_location" placeholder="From Location ID" required>
+            <input type="text" name="to_location" placeholder="To Location ID" required>
+            <input type="text" name="qty" placeholder="Quantity" required>
+            <input type="submit" value="Move Product">
+        </form>
+        <button type="button" onclick="goBack()" class="btn btn-primary btn-lg">Back</button>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+        <table>
+            <tr>
+                <th>Movement ID</th>
+                <th>Timestamp</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+            </tr>
+            {% for movement in movements %}
+            <tr>
+                <td>{{ movement.movement_id }}</td>
+                <td>{{ movement.timestamp }}</td>
+                <td>{{ movement.from_location }}</td>
+                <td>{{ movement.to_location }}</td>
+                <td>{{ movement.product_id }}</td>
+                <td>{{ movement.qty }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
